@@ -62,14 +62,14 @@ function Home() {
               <div className="w-6 h-0.5 bg-gradient-to-r from-cyan-900 to-cyan-800 rounded-full"></div>
             </div>
           </div>
-          <p className="text-base text-gray-800 mt-4 mb-8">
+          <p className="text-sm sm:text-base text-gray-800 mt-4 mb-0 lg:mb-8">
             Passionate about creating innovations solutions through technology
           </p>
-          <div className="flex flex-col sm:flex-row gap-6 text-center sm:text-left mt-6 w-full">
+          <div className="flex flex-col lg:flex-row gap-6 text-center mt-6 w-full">
             {/* Kolom Gambar */}
-            <div className="w-1/2 flex items-center justify-center">
-              <div className="relative h-96 w-full">
-                <div className="absolute top-12 left-12 w-72 p-1 rounded-xl backdrop-blur-md bg-white/20 shadow-md">
+            <div className="w-full lg:w-1/2 flex items-center justify-center">
+              <div className="relative h-64 md:h-72 lg:h-96 w-80 md:w-96 lg:w-full">
+                <div className="absolute top-7 md:top-7 lg:top-12 left-6 lg:left-12 w-52 md:w-60 lg:w-72 p-1 rounded-xl backdrop-blur-md bg-white/20 shadow-md">
                   <img
                     src={ProfileImage}
                     alt="Gambar 1"
@@ -78,7 +78,7 @@ function Home() {
                 </div>
 
                 {/* Gambar 2 */}
-                <div className="absolute top-0 right-20 w-36 p-1 rounded-xl backdrop-blur-md bg-white/20 shadow-md">
+                <div className="absolute top-0 right-12 md:right-14 lg:right-20 w-24 md:w-28 lg:w-36 p-1 rounded-xl backdrop-blur-md bg-white/20 shadow-md">
                   <img
                     src={ProfileImage}
                     alt="Gambar 2"
@@ -87,7 +87,7 @@ function Home() {
                 </div>
 
                 {/* Gambar 3 */}
-                <div className="absolute bottom-0 right-12 w-52 p-1 rounded-xl backdrop-blur-md bg-white/20 shadow-md">
+                <div className="absolute bottom-0 right-6 lg:right-12 w-36 md:w-40 lg:w-52 p-1 rounded-xl backdrop-blur-md bg-white/20 shadow-md">
                   <img
                     src={ProfileImage}
                     alt="Gambar 3"
@@ -98,11 +98,11 @@ function Home() {
             </div>
 
             {/* Kolom Paragraf */}
-            <div className="w-1/2">
+            <div className="w-full lg:w-1/2">
               <p className="text-gray-800 text-xl sm:text-2xl font-bold mb-4">
                 Hello There!
               </p>
-              <p className="text-gray-800 text-sm text-justify">
+              <p className="text-gray-800 text-xs sm:text-sm text-justify">
                 I am a Junior Web Developer with a degree in Informatics
                 Engineering from Politeknik Negeri Malang, passionate about web
                 development and cutting-edge technology. Driven to bridge modern
@@ -111,7 +111,7 @@ function Home() {
                 rapidly evolving digital era, I believe lifelong learning is the
                 key to staying competitive and relevant.
               </p>
-              <div className="grid grid-cols-2 gap-2 mt-8">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-2 mt-8 text-left">
                 <div className="flex items-center bg-white rounded-xl shadow-md">
                   <div className="flex items-center justify-center p-2 m-2 bg-slate-800 rounded-md text-sm">
                     <FaRegUser className="text-white" />
@@ -183,7 +183,7 @@ function Home() {
               <p className="mt-6 text-gray-800 text-base font-bold">
                 Interest & Focus
               </p>
-              <div className="mt-2 flex gap-2">
+              <div className="mt-2 flex gap-2 justify-center lg:justify-start">
                 <span className="text-gray-700 bg-gray-100 px-2 py-0.5 rounded shadow text-xs font-medium">
                   Web Development
                 </span>
@@ -197,10 +197,12 @@ function Home() {
                   React Js
                 </span>
               </div>
-              <button className="flex justify-center mt-6 items-center px-2 py-1.5 bg-gradient-to-r from-cyan-900 to-cyan-800 text-white text-sm font-normal rounded-lg shadow-md hover:from-cyan-950 hover:to-cyan-900 transition-colors duration-300 cursor-pointer">
-                <HiOutlineDownload className="inline-block mr-2" />
-                Download My CV
-              </button>
+              <div className="flex justify-center lg:justify-start">
+                <button className="flex justify-center mt-6 items-center px-2 py-1.5 bg-gradient-to-r from-cyan-900 to-cyan-800 text-white text-sm font-normal rounded-lg shadow-md hover:from-cyan-950 hover:to-cyan-900 transition-colors duration-300 cursor-pointer">
+                  <HiOutlineDownload className="inline-block mr-2" />
+                  Download My CV
+                </button>
+              </div>
             </div>
           </div>
         </div>
