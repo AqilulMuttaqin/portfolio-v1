@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+.nav-item {
+    @apply text-base text-gray-800 hover:text-cyan-900 font-normal transition duration-150 pb-1 px-0.5;
+}
+
+.nav-item.active {
+    @apply text-base bg-gradient-to-r from-cyan-900 to-cyan-800 bg-clip-text text-transparent font-semibold pb-1 px-0.5;
+}
+
+.nav-item-2 {
+    @apply block px-3 py-2 text-base font-medium text-gray-700 hover:text-cyan-900 hover:bg-gray-50;
+}
+
+.nav-item-2.active {
+    @apply block px-3 py-2 text-base font-bold bg-gradient-to-r from-cyan-900 to-cyan-800 bg-clip-text text-transparent;
+}
