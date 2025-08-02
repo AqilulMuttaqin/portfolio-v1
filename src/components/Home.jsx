@@ -117,8 +117,8 @@ function Home() {
                     <FaRegUser className="text-white" />
                   </div>
                   <div className="flex flex-col my-2">
-                    <span className="text-gray-500 text-xs">Name</span>
-                    <span className="text-gray-800 text-xs font-medium">
+                    <span className="text-gray-500 text-[0.625rem] sm:text-xs">Name</span>
+                    <span className="text-gray-800 text-[0.625rem] sm:text-xs font-medium">
                       Muhammad Aqilul Muttaqin
                     </span>
                   </div>
@@ -128,8 +128,8 @@ function Home() {
                     <HiOutlineLocationMarker className="text-white" />
                   </div>
                   <div className="flex flex-col my-2">
-                    <span className="text-gray-500 text-xs">Address</span>
-                    <span className="text-gray-800 text-xs font-medium">
+                    <span className="text-gray-500 text-[0.625rem] sm:text-xs">Address</span>
+                    <span className="text-gray-800 text-[0.625rem] sm:text-xs font-medium">
                       Malang, Indonesia
                     </span>
                   </div>
@@ -139,8 +139,8 @@ function Home() {
                     <RiGraduationCapLine className="text-white" />
                   </div>
                   <div className="flex flex-col my-2">
-                    <span className="text-gray-500 text-xs">Education</span>
-                    <span className="text-gray-800 text-xs font-medium">
+                    <span className="text-gray-500 text-[0.625rem] sm:text-xs">Education</span>
+                    <span className="text-gray-800 text-[0.625rem] sm:text-xs font-medium">
                       D4 Informatics Engineering
                     </span>
                   </div>
@@ -150,8 +150,8 @@ function Home() {
                     <MdMailOutline className="text-white" />
                   </div>
                   <div className="flex flex-col my-2">
-                    <span className="text-gray-500 text-xs">Email</span>
-                    <span className="text-gray-800 text-xs font-medium">
+                    <span className="text-gray-500 text-[0.625rem] sm:text-xs">Email</span>
+                    <span className="text-gray-800 text-[0.625rem] sm:text-xs font-medium">
                       aqilulmuttaqin16@gmail.com
                     </span>
                   </div>
@@ -161,8 +161,8 @@ function Home() {
                     <MdOutlinePhone className="text-white" />
                   </div>
                   <div className="flex flex-col my-2">
-                    <span className="text-gray-500 text-xs">Phone</span>
-                    <span className="text-gray-800 text-xs font-medium">
+                    <span className="text-gray-500 text-[0.625rem] sm:text-xs">Phone</span>
+                    <span className="text-gray-800 text-[0.625rem] sm:text-xs font-medium">
                       +62 823-3955-0714
                     </span>
                   </div>
@@ -172,8 +172,8 @@ function Home() {
                     <FaRegBell className="text-white" />
                   </div>
                   <div className="flex flex-col my-2">
-                    <span className="text-gray-500 text-xs">Status</span>
-                    <span className="text-gray-800 text-xs font-medium">
+                    <span className="text-gray-500 text-[0.625rem] sm:text-xs">Status</span>
+                    <span className="text-gray-800 text-[0.625rem] sm:text-xs font-medium">
                       Available for Work
                     </span>
                   </div>
