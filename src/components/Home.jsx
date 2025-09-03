@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Navbar from "./Layouts/Navbar";
 import ProfileImage from "../assets/images/profile.jpg";
 import { TbNorthStar } from "react-icons/tb";
@@ -8,6 +9,48 @@ import { HiOutlineLocationMarker, HiOutlineDownload } from "react-icons/hi";
 import { RiGraduationCapLine } from "react-icons/ri";
 
 function Home() {
+  const [activeTab, setActiveTab] = useState("work");
+
+  const workExperience = [
+    {
+      role: "Frontend Developer Intern",
+      company: "Tech Startup Indonesia",
+      date: "Jan 2023 - Aug 2023",
+      location: "Medan, Indonesia",
+      description:
+        "Developed responsive web applications using React.js and Tailwind CSS. Collaborated with design team to implement pixel-perfect UI components and improved website performance by 30%.",
+      skills: ["React.js", "Tailwind CSS", "JavaScript", "Git"],
+    },
+    {
+      role: "Web Developer",
+      company: "Freelance Projects",
+      date: "Jan 2023 - Present",
+      location: "Remote",
+      description:
+        "Created custom websites for local businesses and startups. Specialized in modern web technologies and responsive design principles.",
+      skills: ["HTML/CSS", "JavaScript", "WordPress", "UI/UX Design"],
+    },
+  ];
+
+  const education = [
+    {
+      degree: "Bachelor of Informatics Engineering",
+      institution: "Politeknik Negeri Malang",
+      date: "2019 - 2023",
+      location: "Malang, Indonesia",
+      description:
+        "Focused on web development, database management, and decision support systems.",
+    },
+    {
+      degree: "Bachelor of Informatics Engineering",
+      institution: "Politeknik Negeri Malang",
+      date: "2019 - 2023",
+      location: "Malang, Indonesia",
+      description:
+        "Focused on web development, database management, and decision support systems.",
+    },
+  ];
+
   return (
     <>
       <Navbar />
@@ -99,7 +142,7 @@ function Home() {
 
             {/* Kolom Paragraf */}
             <div className="w-full lg:w-1/2">
-              <p className="text-gray-800 text-xl sm:text-2xl font-bold mb-4">
+              <p className="text-gray-800 text-xl sm:text-2xl text-center lg:text-left font-bold mb-4">
                 Hello There!
               </p>
               <p className="text-gray-800 text-xs sm:text-sm text-justify">
@@ -117,7 +160,9 @@ function Home() {
                     <FaRegUser className="text-white" />
                   </div>
                   <div className="flex flex-col my-2">
-                    <span className="text-gray-500 text-[0.625rem] sm:text-xs">Name</span>
+                    <span className="text-gray-500 text-[0.625rem] sm:text-xs">
+                      Name
+                    </span>
                     <span className="text-gray-800 text-[0.625rem] sm:text-xs font-medium">
                       Muhammad Aqilul Muttaqin
                     </span>
@@ -128,7 +173,9 @@ function Home() {
                     <HiOutlineLocationMarker className="text-white" />
                   </div>
                   <div className="flex flex-col my-2">
-                    <span className="text-gray-500 text-[0.625rem] sm:text-xs">Address</span>
+                    <span className="text-gray-500 text-[0.625rem] sm:text-xs">
+                      Address
+                    </span>
                     <span className="text-gray-800 text-[0.625rem] sm:text-xs font-medium">
                       Malang, Indonesia
                     </span>
@@ -139,7 +186,9 @@ function Home() {
                     <RiGraduationCapLine className="text-white" />
                   </div>
                   <div className="flex flex-col my-2">
-                    <span className="text-gray-500 text-[0.625rem] sm:text-xs">Education</span>
+                    <span className="text-gray-500 text-[0.625rem] sm:text-xs">
+                      Education
+                    </span>
                     <span className="text-gray-800 text-[0.625rem] sm:text-xs font-medium">
                       D4 Informatics Engineering
                     </span>
@@ -150,7 +199,9 @@ function Home() {
                     <MdMailOutline className="text-white" />
                   </div>
                   <div className="flex flex-col my-2">
-                    <span className="text-gray-500 text-[0.625rem] sm:text-xs">Email</span>
+                    <span className="text-gray-500 text-[0.625rem] sm:text-xs">
+                      Email
+                    </span>
                     <span className="text-gray-800 text-[0.625rem] sm:text-xs font-medium">
                       aqilulmuttaqin16@gmail.com
                     </span>
@@ -161,7 +212,9 @@ function Home() {
                     <MdOutlinePhone className="text-white" />
                   </div>
                   <div className="flex flex-col my-2">
-                    <span className="text-gray-500 text-[0.625rem] sm:text-xs">Phone</span>
+                    <span className="text-gray-500 text-[0.625rem] sm:text-xs">
+                      Phone
+                    </span>
                     <span className="text-gray-800 text-[0.625rem] sm:text-xs font-medium">
                       +62 823-3955-0714
                     </span>
@@ -172,7 +225,9 @@ function Home() {
                     <FaRegBell className="text-white" />
                   </div>
                   <div className="flex flex-col my-2">
-                    <span className="text-gray-500 text-[0.625rem] sm:text-xs">Status</span>
+                    <span className="text-gray-500 text-[0.625rem] sm:text-xs">
+                      Status
+                    </span>
                     <span className="text-gray-800 text-[0.625rem] sm:text-xs font-medium">
                       Available for Work
                     </span>
@@ -180,7 +235,7 @@ function Home() {
                 </div>
               </div>
               <hr className="mt-4 border-gray-200" />
-              <p className="mt-6 text-gray-800 text-base font-bold">
+              <p className="mt-6 text-gray-800 text-base text-center lg:text-left font-bold">
                 Interest & Focus
               </p>
               <div className="mt-2 flex gap-2 justify-center lg:justify-start">
@@ -209,19 +264,90 @@ function Home() {
       </div>
 
       <div id="experience" className="flex justify-center min-h-svh bg-white">
-        <div className="flex flex-col items-center justify-center text-center max-w-screen-lg mx-auto px-4 py-16">
-          <div className="flex flex-col items-center justify-center">
-            <p className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-cyan-900 to-cyan-800 bg-clip-text text-transparent">
-              My Experience
-            </p>
-            <div className="mt-1 flex flex-col items-center space-y-1">
-              <div className="w-15 h-1 bg-gradient-to-r from-cyan-900 to-cyan-800 rounded-full"></div>
-              <div className="w-6 h-0.5 bg-gradient-to-r from-cyan-900 to-cyan-800 rounded-full"></div>
-            </div>
-          </div>
-          <p className="text-base text-gray-800 mt-4 mb-8">
-            Passionate about creating innovations solutions through technology
+        <div className="flex flex-col items-center justify-center text-center max-w-screen-lg mx-auto px-4 py-16 w-full">
+          {/* Header */}
+          <p className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-cyan-900 to-cyan-800 bg-clip-text text-transparent">
+            My Experience
           </p>
+          <p className="text-base text-gray-800 mt-4 mb-8">
+            Showcasing my professional journey through work experiences and
+            educational milestones.
+          </p>
+
+          {/* Tabs */}
+          <div className="flex space-x-1 rounded-xl mb-8 w-full bg-gray-100">
+            <button
+              onClick={() => setActiveTab("work")}
+              className={`w-full rounded-lg py-2.5 text-sm font-medium leading-5 ${
+                activeTab === "work"
+                  ? "bg-gradient-to-r from-cyan-900 to-cyan-800 text-white shadow"
+                  : "text-gray-600 hover:bg-white/[0.12] hover:text-cyan-800"
+              }`}
+            >
+              Work Experience
+            </button>
+            <button
+              onClick={() => setActiveTab("education")}
+              className={`w-full rounded-lg py-2.5 text-sm font-medium leading-5 ${
+                activeTab === "education"
+                  ? "bg-gradient-to-r from-cyan-900 to-cyan-800 text-white shadow"
+                  : "text-gray-600 hover:bg-white/[0.12] hover:text-cyan-800"
+              }`}
+            >
+              Education
+            </button>
+          </div>
+
+          {/* Timeline Content */}
+          <div className="w-full">
+            {activeTab === "work" &&
+              workExperience.map((exp, index) => (
+                <div
+                  key={index}
+                  className="relative pl-8 mb-8 text-left border-l-4 border-cyan-800"
+                >
+                  <div className="absolute -left-[11px] top-0 w-5 h-5 bg-cyan-800 rounded-full"></div>
+                  <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition w-full">
+                    <h3 className="text-lg font-semibold">{exp.role}</h3>
+                    <p className="text-sm text-gray-500 mb-2">{exp.company}</p>
+                    <p className="text-sm text-gray-500 mb-2">
+                      {exp.date} · {exp.location}
+                    </p>
+                    <p className="text-gray-700 mb-3">{exp.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {exp.skills.map((skill, i) => (
+                        <span
+                          key={i}
+                          className="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded-full"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+            {activeTab === "education" &&
+              education.map((edu, index) => (
+                <div
+                  key={index}
+                  className="relative pl-8 mb-8 text-left border-l-4 border-cyan-800"
+                >
+                  <div className="absolute -left-[11px] top-0 w-5 h-5 bg-cyan-800 rounded-full"></div>
+                  <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition w-full">
+                    <h3 className="text-lg font-semibold">{edu.degree}</h3>
+                    <p className="text-sm text-gray-500 mb-2">
+                      {edu.institution}
+                    </p>
+                    <p className="text-sm text-gray-500 mb-2">
+                      {edu.date} · {edu.location}
+                    </p>
+                    <p className="text-gray-700">{edu.description}</p>
+                  </div>
+                </div>
+              ))}
+          </div>
         </div>
       </div>
 
