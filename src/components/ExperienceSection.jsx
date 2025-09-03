@@ -118,7 +118,7 @@ const ExperienceSection = () => {
                     <MdOutlineLocationOn className="inline-block mx-1" />
                     {exp.location}
                   </p>
-                  <p className="text-sm sm:text-base text-gray-700 mb-3">
+                  <p className="text-xs sm:text-sm text-gray-700 mb-3">
                     {exp.description}
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -156,7 +156,7 @@ const ExperienceSection = () => {
                     <MdOutlineLocationOn className="inline-block mx-1" />
                     {edu.location}
                   </p>
-                  <p className="text-sm sm:text-base text-gray-700 mb-3">
+                  <p className="text-xs sm:text-sm text-gray-700 mb-3">
                     {edu.description}
                   </p>
                   <div className="flex flex-wrap gap-2">
