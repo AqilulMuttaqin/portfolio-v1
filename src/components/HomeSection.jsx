@@ -31,13 +31,13 @@ const HomeSection = () => {
           user-friendly design, I build websites that make an impact.
         </p>
         <div className="flex flex-col sm:flex-row gap-2 mt-8 lg:mt-6">
-          <button className="flex justify-center items-center px-2 py-1.5 bg-gradient-to-r from-cyan-900 to-cyan-800 text-white text-sm font-normal rounded-lg shadow-md hover:from-cyan-950 hover:to-cyan-900 transition-colors duration-300 cursor-pointer">
+          <button className="flex justify-center items-center px-3 py-1.5 bg-gradient-to-r from-cyan-900 to-cyan-800 text-white text-sm font-normal rounded-lg shadow-md hover:from-cyan-950 hover:to-cyan-900 transition-colors duration-300 cursor-pointer">
             <BsStars className="inline-block mr-2" />
             View Projects
             <FaLongArrowAltRight className="inline-block ml-2" />
           </button>
           <div className="relative group rounded-lg p-[1px] bg-gradient-to-r from-cyan-900 to-cyan-800">
-            <button className="flex justify-center items-center w-full h-full px-2 py-1.5 bg-white text-cyan-900 text-sm font-normal rounded-lg transition-colors duration-300 group-hover:bg-gradient-to-r hover:from-cyan-900 hover:to-cyan-800 hover:text-white cursor-pointer">
+            <button className="flex justify-center items-center w-full h-full px-3 py-1.5 bg-white text-cyan-900 text-sm font-normal rounded-lg transition-colors duration-300 group-hover:bg-gradient-to-r hover:from-cyan-900 hover:to-cyan-800 hover:text-white cursor-pointer">
               <MdMailOutline className="inline-block mr-2" />
               Let's Work Together
             </button>

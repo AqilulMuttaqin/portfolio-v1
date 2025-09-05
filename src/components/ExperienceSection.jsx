@@ -66,12 +66,12 @@ const ExperienceSection = () => {
             <div className="w-6 h-0.5 bg-gradient-to-r from-cyan-900 to-cyan-800 rounded-full"></div>
           </div>
         </div>
-        <p className="text-sm sm:text-base text-gray-800 mt-4 mb-8">
+        <p className="text-sm sm:text-base text-gray-800 my-4">
           Showcasing my professional journey through work experiences and
           educational milestones.
         </p>
 
-        <div className="flex space-x-1 rounded-xl mb-8 w-full bg-gray-100">
+        <div className="flex space-x-1 rounded-xl mb-4 w-full bg-gray-100 mt-4">
           <button
             onClick={() => setActiveTab("work")}
             className={`flex items-center justify-center w-full rounded-lg py-1.5 sm:py-2 text-xs sm:text-sm font-medium leading-5 cursor-pointer ${
