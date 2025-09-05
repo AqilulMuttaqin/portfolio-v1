@@ -26,9 +26,9 @@ const HomeSection = () => {
         </div>
         <TbNorthStar className="text-cyan-900 text-lg sm:text-xl lg:text-2xl my-6 lg:my-4" />
         <p className="text-gray-800 text-sm sm:text-base max-w-screen-sm">
-          A junior web developer — passionately crafting digital experiences
-          and solutions since 2024. With a focus on clean code and
-          user-friendly design, I build websites that make an impact.
+          A junior web developer — passionately crafting digital experiences and
+          solutions since 2024. With a focus on clean code and user-friendly
+          design, I build websites that make an impact.
         </p>
         <div className="flex flex-col sm:flex-row gap-2 mt-8 lg:mt-6">
           <button className="flex justify-center items-center px-3 py-1.5 bg-gradient-to-r from-cyan-900 to-cyan-800 text-white text-sm font-normal rounded-lg shadow-md hover:from-cyan-950 hover:to-cyan-900 transition-colors duration-300 cursor-pointer">

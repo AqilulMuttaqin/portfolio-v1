@@ -17,7 +17,7 @@ const AboutSection = () => {
             <div className="w-6 h-0.5 bg-gradient-to-r from-cyan-900 to-cyan-800 rounded-full"></div>
           </div>
         </div>
-        <p className="text-sm sm:text-base text-gray-800 my-4 lg:mb-8">
+        <p className="text-sm sm:text-base text-gray-800 my-4">
           Passionate about creating innovations solutions through technology
         </p>
         <div className="flex flex-col lg:flex-row gap-6 text-center mt-4 w-full">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, scroller } from "react-scroll";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { CgMenuRight } from "react-icons/cg";
 
@@ -94,6 +94,15 @@ const Navbar = () => {
         aria-label="GitHub Profile"
       >
         <FaGithub className="text-2xl" />
+      </a>
+      <a
+        href="https://instagram.com/your-username"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-gray-800 hover:text-cyan-900 rounded-full transition-colors duration-200"
+        aria-label="Instagram Profile"
+      >
+        <FaInstagram className="text-2xl" />
       </a>
     </div>
   );

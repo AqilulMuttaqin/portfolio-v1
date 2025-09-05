@@ -195,7 +195,7 @@ const ProjectSection = () => {
             <div className="w-6 h-0.5 bg-gradient-to-r from-cyan-900 to-cyan-800 rounded-full"></div>
           </div>
         </div>
-        <p className="text-base text-gray-800 my-4 max-w-2xl">
+        <p className="text-sm sm:text-base text-gray-800 my-4">
           Projects I've built throughout my learning journey. Each project
           represents a unique challenge and an opportunity to grow my skills.
         </p>

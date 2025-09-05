@@ -5,7 +5,6 @@ import {
   FaInstagram,
   FaPaperPlane,
 } from "react-icons/fa";
-import { BiLogoGmail } from "react-icons/bi";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -41,7 +40,7 @@ const ContactSection = () => {
             <div className="w-6 h-0.5 bg-gradient-to-r from-cyan-900 to-cyan-800 rounded-full"></div>
           </div>
         </div>
-        <p className="text-base text-gray-800 my-4 max-w-2xl">
+        <p className="text-sm sm:text-base text-gray-800 my-4">
           Ready to bring your ideas to life? Let's discuss how we can work
           together to create something amazing.
         </p>
@@ -49,10 +48,10 @@ const ContactSection = () => {
         <div className="flex flex-col md:flex-row gap-12 w-full mt-8 text-left">
           {/* Social Media Section */}
           <div className="w-full lg:w-1/2">
-            <h2 className="text-xl font-bold text-gray-800 mb-4">
+            <h2 className="text-xl sm:text-2xl text-center sm:text-left font-bold text-gray-800 mb-4">
               Connect With Me
             </h2>
-            <p className="text-sm text-gray-600 mb-4">
+            <p className="text-xs sm:text-sm text-center sm:text-left text-gray-600 mb-4">
               Follow me on social media to stay updated with my latest projects,
               tech insights, and development journey. Let's connect and build
               something great together!
@@ -62,17 +61,17 @@ const ContactSection = () => {
               {/* LinkedIn */}
               <div className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition w-full">
                 <div className="flex items-start">
-                  <div className="bg-gradient-to-r from-cyan-900 to-cyan-800 p-2 rounded-lg mr-4">
-                    <FaLinkedin className="text-white text-xl" />
+                  <div className="bg-gradient-to-r from-cyan-900 to-cyan-800 p-2 sm:p-3 rounded-lg mr-4">
+                    <FaLinkedin className="text-white text-lg sm:text-xl" />
                   </div>
                   <div>
-                    <div className="flex items-center text-sm mb-1">
+                    <div className="flex items-center text-xs sm:text-sm mb-1">
                       <h3 className="font-semibold text-gray-800">LinkedIn</h3>
                       <p className="text-gray-500 font-medium ms-2">
                         @muhammad-aqilul-muttaqin
                       </p>
                     </div>
-                    <p className="text-gray-600 text-xs">
+                    <p className="text-gray-600 text-[0.625rem] sm:text-xs">
                       Connect with me professionally and see my career journey
                     </p>
                   </div>
@@ -82,57 +81,37 @@ const ContactSection = () => {
               {/* GitHub */}
               <div className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition w-full">
                 <div className="flex items-start">
-                  <div className="bg-gradient-to-r from-cyan-900 to-cyan-800 p-2 rounded-lg mr-4">
-                    <FaGithub className="text-white text-xl" />
+                  <div className="bg-gradient-to-r from-cyan-900 to-cyan-800 p-2 sm:p-3 rounded-lg mr-4">
+                    <FaGithub className="text-white text-lg sm:text-xl" />
                   </div>
                   <div>
-                    <div className="flex items-center text-sm mb-1">
+                    <div className="flex items-center text-xs sm:text-sm mb-1">
                       <h3 className="font-semibold text-gray-800">GitHub</h3>
                       <p className="text-gray-500 font-medium ms-2">
                         @aqilulmuttaqin
                       </p>
                     </div>
-                    <p className="text-gray-600 text-xs">
+                    <p className="text-gray-600 text-[0.625rem] sm:text-xs">
                       Check out my latest projects and open source contributions
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* Gmail
-              <div className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition w-full">
-                <div className="flex items-start">
-                  <div className="bg-gradient-to-r from-cyan-900 to-cyan-800 p-2 rounded-lg mr-4">
-                    <BiLogoGmail className="text-white text-xl" />
-                  </div>
-                  <div>
-                    <div className="flex items-center text-sm mb-1">
-                      <h3 className="font-semibold text-gray-800">Gmail</h3>
-                      <p className="text-gray-500 font-medium ms-2">
-                        aqilulmuttaqin16@gmail.com
-                      </p>
-                    </div>
-                    <p className="text-gray-600 text-xs">
-                      Please contact me via email for formal inquiries
-                    </p>
-                  </div>
-                </div>
-              </div> */}
-
               {/* Instagram */}
               <div className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition w-full">
                 <div className="flex items-start">
-                  <div className="bg-gradient-to-r from-cyan-900 to-cyan-800 p-2 rounded-lg mr-4">
-                    <FaInstagram className="text-white text-xl" />
+                  <div className="bg-gradient-to-r from-cyan-900 to-cyan-800 p-2 sm:p-3 rounded-lg mr-4">
+                    <FaInstagram className="text-white text-lg sm:text-xl" />
                   </div>
                   <div>
-                    <div className="flex items-center text-sm mb-1">
+                    <div className="flex items-center text-xs sm:text-sm mb-1">
                       <h3 className="font-semibold text-gray-800">Instagram</h3>
                       <p className="text-gray-500 font-medium ms-2">
                         @aql_mtqn
                       </p>
                     </div>
-                    <p className="text-gray-600 text-xs">
+                    <p className="text-gray-600 text-[0.625rem] sm:text-xs">
                       Behind the scenes of my development journey
                     </p>
                   </div>
@@ -143,10 +122,10 @@ const ContactSection = () => {
 
           {/* Contact Form Section */}
           <div className="w-full lg:w-1/2">
-            <h2 className="text-xl font-bold text-gray-800 mb-4">
+            <h2 className="text-xl sm:text-2xl text-center sm:text-left font-bold text-gray-800 mb-4">
               Contact Form
             </h2>
-            <p className="text-sm text-gray-600 mb-4">
+            <p className="text-xs sm:text-sm text-center sm:text-left text-gray-600 mb-4">
               Have a project in mind? Send me a message and I'll get back to you
               as soon as possible.
             </p>
@@ -155,7 +134,7 @@ const ContactSection = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="flex flex-col sm:flex-row items-center gap-2 mb-2">
                   <div className="w-full">
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                       Name <span className="text-cyan-800">*</span>
                     </label>
                     <input
@@ -170,7 +149,7 @@ const ContactSection = () => {
                   </div>
 
                   <div className="w-full">
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                       Email <span className="text-cyan-800">*</span>
                     </label>
                     <input
@@ -186,7 +165,7 @@ const ContactSection = () => {
                 </div>
 
                 <div className="mb-2">
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                     Subject
                   </label>
                   <input
@@ -200,7 +179,7 @@ const ContactSection = () => {
                 </div>
 
                 <div className="mb-2">
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                     Message <span className="text-cyan-800">*</span>
                   </label>
                   <textarea
