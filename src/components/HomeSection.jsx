@@ -1,3 +1,4 @@
+import { Link } from "react-scroll";
 import { TbNorthStar } from "react-icons/tb";
 import { BsStars } from "react-icons/bs";
 import { FaLongArrowAltRight } from "react-icons/fa";
@@ -5,6 +6,14 @@ import { MdMailOutline } from "react-icons/md";
 import ProfileImage from "../assets/images/profile.jpg";
 
 const HomeSection = () => {
+  const handleScrollClick = (section) => {
+    // Scroll to section with smooth animation
+    const element = document.getElementById(section);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div id="home" className="flex justify-center min-h-svh bg-white">
       <div className="flex flex-col items-center justify-center text-center max-w-screen-lg mx-auto px-4 py-16">
@@ -31,16 +40,30 @@ const HomeSection = () => {
           design, I build websites that make an impact.
         </p>
         <div className="flex flex-col sm:flex-row gap-2 mt-8 lg:mt-6">
-          <button className="flex justify-center items-center px-3 py-1.5 bg-gradient-to-r from-cyan-900 to-cyan-800 text-white text-sm font-normal rounded-lg shadow-md hover:from-cyan-950 hover:to-cyan-900 transition-colors duration-300 cursor-pointer">
+          <Link
+            to="project"
+            spy={true}
+            smooth={true}
+            offset={-32}
+            duration={500}
+            className="flex justify-center items-center px-3 py-1.5 bg-gradient-to-r from-cyan-900 to-cyan-800 text-white text-sm font-normal rounded-lg shadow-md hover:from-cyan-950 hover:to-cyan-900 transition-colors duration-300 cursor-pointer"
+          >
             <BsStars className="inline-block mr-2" />
             View Projects
             <FaLongArrowAltRight className="inline-block ml-2" />
-          </button>
+          </Link>
           <div className="relative group rounded-lg p-[1px] bg-gradient-to-r from-cyan-900 to-cyan-800">
-            <button className="flex justify-center items-center w-full h-full px-3 py-1.5 bg-white text-cyan-900 text-sm font-normal rounded-lg transition-colors duration-300 group-hover:bg-gradient-to-r hover:from-cyan-900 hover:to-cyan-800 hover:text-white cursor-pointer">
+            <Link
+              to="contact"
+              spy={true}
+              smooth={true}
+              offset={-32}
+              duration={500}
+              className="flex justify-center items-center w-full h-full px-3 py-1.5 bg-white text-cyan-900 text-sm font-normal rounded-lg transition-colors duration-300 group-hover:bg-gradient-to-r hover:from-cyan-900 hover:to-cyan-800 hover:text-white cursor-pointer"
+            >
               <MdMailOutline className="inline-block mr-2" />
               Let's Work Together
-            </button>
+            </Link>
           </div>
         </div>
       </div>

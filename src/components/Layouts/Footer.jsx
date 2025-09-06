@@ -1,13 +1,12 @@
 import { Link } from "react-scroll";
 import {
   FaHeart,
-  FaLinkedin,
-  FaGithub,
-  FaInstagram,
+  FaLinkedinIn,
   FaWhatsapp,
 } from "react-icons/fa";
+import { RiInstagramFill } from "react-icons/ri";
 import { MdMailOutline, MdOutlineWorkOutline } from "react-icons/md";
-import { TbHome, TbUser, TbFolder } from "react-icons/tb";
+import { TbHome, TbUser, TbFolder, TbBrandGithubFilled } from "react-icons/tb";
 
 const Footer = () => {
   const handleScrollClick = (section) => {
@@ -25,37 +24,37 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="col-span-12 md:col-span-5 lg:col-span-6">
             <h3 className="text-xl sm:text-2xl font-bold mb-4">AQiels Portfolio</h3>
-            <p className="text-gray-600 mb-4 md:mb-6 text-xs sm:text-sm">
+            <p className="text-gray-600 mb-4 text-xs sm:text-sm">
               Passionate developer creating innovative solutions and beautiful
               experiences. Let's build something amazing together.
             </p>
-            <div className="flex items-center gap-4 text-cyan-100 mb-6 md:mb-0">
+            <div className="flex items-center gap-3 text-cyan-100 mb-6 md:mb-0">
               <a
-                href="https://linkedin.com/in/your-profile"
+                href="https://linkedin.com/in/muhammad-aqilul-muttaqin"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-800 hover:text-cyan-900 rounded-full transition-colors duration-200"
+                className="p-1.5 bg-gray-800 hover:bg-cyan-900 text-white rounded-full transition-colors duration-200"
                 aria-label="LinkedIn Profile"
               >
-                <FaLinkedin className="text-xl sm:text-2xl" />
+                <FaLinkedinIn className="text-lg sm:text-xl" />
               </a>
               <a
-                href="https://github.com/your-username"
+                href="https://github.com/AqilulMuttaqin"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-800 hover:text-cyan-900 rounded-full transition-colors duration-200"
+                className="p-1.5 bg-gray-800 hover:bg-cyan-900 text-white rounded-full transition-colors duration-200"
                 aria-label="GitHub Profile"
               >
-                <FaGithub className="text-xl sm:text-2xl" />
+                <TbBrandGithubFilled className="text-lg sm:text-xl" />
               </a>
               <a
-                href="https://instagram.com/your-username"
+                href="https://instagram.com/aql_mtqn"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-800 hover:text-cyan-900 rounded-full transition-colors duration-200"
+                className="p-1.5 bg-gray-800 hover:bg-cyan-900 text-white rounded-full transition-colors duration-200"
                 aria-label="Instagram Profile"
               >
-                <FaInstagram className="text-xl sm:text-2xl" />
+                <RiInstagramFill className="text-lg sm:text-xl" />
               </a>
             </div>
           </div>

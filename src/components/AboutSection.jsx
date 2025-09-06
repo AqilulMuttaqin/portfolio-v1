@@ -61,10 +61,10 @@ const AboutSection = () => {
               I am a Junior Web Developer with a degree in Informatics
               Engineering from Politeknik Negeri Malang, passionate about web
               development and cutting-edge technology. Driven to bridge modern
-              technology with intelligent systems, I am committed to
-              delivering optimal and efficient digital solutions. In this
-              rapidly evolving digital era, I believe lifelong learning is the
-              key to staying competitive and relevant.
+              technology with intelligent systems, I am committed to delivering
+              optimal and efficient digital solutions. In this rapidly evolving
+              digital era, I believe lifelong learning is the key to staying
+              competitive and relevant.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-2 mt-8 text-left">
               <div className="flex items-center bg-white rounded-xl shadow-md hover:shadow-lg">
@@ -165,10 +165,14 @@ const AboutSection = () => {
               </span>
             </div>
             <div className="flex justify-center lg:justify-start">
-              <button className="flex justify-center mt-6 items-center px-3 py-1.5 bg-gradient-to-r from-cyan-900 to-cyan-800 text-white text-sm font-normal rounded-lg shadow-md hover:from-cyan-950 hover:to-cyan-900 transition-colors duration-300 cursor-pointer">
+              <a
+                href="/cv_muhammad-aqilul-muttaqin.pdf"
+                download="CV - Muhammad Aqilul Muttaqin.pdf"
+                className="flex justify-center mt-6 items-center px-3 py-1.5 bg-gradient-to-r from-cyan-900 to-cyan-800 text-white text-sm font-normal rounded-lg shadow-md hover:from-cyan-950 hover:to-cyan-900 transition-colors duration-300"
+              >
                 <HiOutlineDownload className="inline-block mr-2" />
                 Download My CV
-              </button>
+              </a>
             </div>
           </div>
         </div>

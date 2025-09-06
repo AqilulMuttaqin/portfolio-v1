@@ -1,10 +1,7 @@
 import { useState } from "react";
-import {
-  FaLinkedin,
-  FaGithub,
-  FaInstagram,
-  FaPaperPlane,
-} from "react-icons/fa";
+import { FaLinkedinIn, FaPaperPlane } from "react-icons/fa";
+import { TbBrandGithubFilled } from "react-icons/tb";
+import { RiInstagramFill } from "react-icons/ri";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -60,62 +57,86 @@ const ContactSection = () => {
             <div className="space-y-4">
               {/* LinkedIn */}
               <div className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition w-full">
-                <div className="flex items-start">
-                  <div className="bg-gradient-to-r from-cyan-900 to-cyan-800 p-2 sm:p-3 rounded-lg mr-4">
-                    <FaLinkedin className="text-white text-lg sm:text-xl" />
-                  </div>
-                  <div>
-                    <div className="flex items-center text-xs sm:text-sm mb-1">
-                      <h3 className="font-semibold text-gray-800">LinkedIn</h3>
-                      <p className="text-gray-500 font-medium ms-2">
-                        @muhammad-aqilul-muttaqin
+                <a
+                  href="https://linkedin.com/in/muhammad-aqilul-muttaqin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className=""
+                >
+                  <div className="flex items-start">
+                    <div className="bg-gradient-to-r from-cyan-900 to-cyan-800 p-2 sm:p-3 rounded-lg mr-4">
+                      <FaLinkedinIn className="text-white text-lg sm:text-xl" />
+                    </div>
+                    <div>
+                      <div className="flex items-center text-xs sm:text-sm mb-1">
+                        <h3 className="font-semibold text-gray-800">
+                          LinkedIn
+                        </h3>
+                        <p className="text-gray-500 font-medium ms-2">
+                          @muhammad-aqilul-muttaqin
+                        </p>
+                      </div>
+                      <p className="text-gray-600 text-[0.625rem] sm:text-xs">
+                        Connect with me professionally and see my career journey
                       </p>
                     </div>
-                    <p className="text-gray-600 text-[0.625rem] sm:text-xs">
-                      Connect with me professionally and see my career journey
-                    </p>
                   </div>
-                </div>
+                </a>
               </div>
 
               {/* GitHub */}
               <div className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition w-full">
-                <div className="flex items-start">
-                  <div className="bg-gradient-to-r from-cyan-900 to-cyan-800 p-2 sm:p-3 rounded-lg mr-4">
-                    <FaGithub className="text-white text-lg sm:text-xl" />
-                  </div>
-                  <div>
-                    <div className="flex items-center text-xs sm:text-sm mb-1">
-                      <h3 className="font-semibold text-gray-800">GitHub</h3>
-                      <p className="text-gray-500 font-medium ms-2">
-                        @aqilulmuttaqin
+                <a
+                  href="https://github.com/AqilulMuttaqin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="flex items-start">
+                    <div className="bg-gradient-to-r from-cyan-900 to-cyan-800 p-2 sm:p-3 rounded-lg mr-4">
+                      <TbBrandGithubFilled className="text-white text-lg sm:text-xl" />
+                    </div>
+                    <div>
+                      <div className="flex items-center text-xs sm:text-sm mb-1">
+                        <h3 className="font-semibold text-gray-800">GitHub</h3>
+                        <p className="text-gray-500 font-medium ms-2">
+                          @aqilulmuttaqin
+                        </p>
+                      </div>
+                      <p className="text-gray-600 text-[0.625rem] sm:text-xs">
+                        Check out my latest projects and open source
+                        contributions
                       </p>
                     </div>
-                    <p className="text-gray-600 text-[0.625rem] sm:text-xs">
-                      Check out my latest projects and open source contributions
-                    </p>
                   </div>
-                </div>
+                </a>
               </div>
 
               {/* Instagram */}
               <div className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition w-full">
-                <div className="flex items-start">
-                  <div className="bg-gradient-to-r from-cyan-900 to-cyan-800 p-2 sm:p-3 rounded-lg mr-4">
-                    <FaInstagram className="text-white text-lg sm:text-xl" />
-                  </div>
-                  <div>
-                    <div className="flex items-center text-xs sm:text-sm mb-1">
-                      <h3 className="font-semibold text-gray-800">Instagram</h3>
-                      <p className="text-gray-500 font-medium ms-2">
-                        @aql_mtqn
+                <a
+                  href="https://instagram.com/aql_mtqn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="flex items-start">
+                    <div className="bg-gradient-to-r from-cyan-900 to-cyan-800 p-2 sm:p-3 rounded-lg mr-4">
+                      <RiInstagramFill className="text-white text-lg sm:text-xl" />
+                    </div>
+                    <div>
+                      <div className="flex items-center text-xs sm:text-sm mb-1">
+                        <h3 className="font-semibold text-gray-800">
+                          Instagram
+                        </h3>
+                        <p className="text-gray-500 font-medium ms-2">
+                          @aql_mtqn
+                        </p>
+                      </div>
+                      <p className="text-gray-600 text-[0.625rem] sm:text-xs">
+                        Behind the scenes of my development journey
                       </p>
                     </div>
-                    <p className="text-gray-600 text-[0.625rem] sm:text-xs">
-                      Behind the scenes of my development journey
-                    </p>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
           </div>
@@ -195,7 +216,7 @@ const ContactSection = () => {
 
                 <button
                   type="submit"
-                  className="flex items-center justify-center px-3 py-1.5 bg-gradient-to-r from-cyan-900 to-cyan-800 text-white text-sm font-normal rounded-lg shadow-md hover:from-cyan-950 hover:to-cyan-900 transition-colors duration-300"
+                  className="flex items-center justify-center px-3 py-1.5 bg-gradient-to-r from-cyan-900 to-cyan-800 text-white text-sm font-normal rounded-lg shadow-md cursor-pointer hover:from-cyan-950 hover:to-cyan-900 transition-colors duration-300"
                 >
                   <FaPaperPlane className="mr-2" />
                   Send Message

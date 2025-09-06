@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, scroller } from "react-scroll";
-import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
+import { TbBrandGithubFilled } from "react-icons/tb";
+import { RiInstagramFill } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
 import { CgMenuRight } from "react-icons/cg";
 
@@ -73,36 +75,36 @@ const Navbar = () => {
 
   const SocialIcons = ({ isMobile = false }) => (
     <div
-      className={`flex items-center space-x-2 ${
+      className={`flex items-center space-x-1 ${
         isMobile ? "justify-center py-4" : ""
       }`}
     >
       <a
-        href="https://linkedin.com/in/your-profile"
+        href="https://linkedin.com/in/muhammad-aqilul-muttaqin"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-gray-800 hover:text-cyan-900 rounded-full transition-colors duration-200"
+        className="p-1.5 bg-gray-800 hover:bg-cyan-900 text-white rounded-full transition-colors duration-200"
         aria-label="LinkedIn Profile"
       >
-        <FaLinkedin className="text-2xl" />
+        <FaLinkedinIn className="text-base" />
       </a>
       <a
-        href="https://github.com/your-username"
+        href="https://github.com/AqilulMuttaqin"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-gray-800 hover:text-cyan-900 rounded-full transition-colors duration-200"
+        className="p-1.5 bg-gray-800 hover:bg-cyan-900 text-white rounded-full transition-colors duration-200"
         aria-label="GitHub Profile"
       >
-        <FaGithub className="text-2xl" />
+        <TbBrandGithubFilled className="text-base" />
       </a>
       <a
-        href="https://instagram.com/your-username"
+        href="https://instagram.com/aql_mtqn"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-gray-800 hover:text-cyan-900 rounded-full transition-colors duration-200"
+        className="p-1.5 bg-gray-800 hover:bg-cyan-900 text-white rounded-full transition-colors duration-200"
         aria-label="Instagram Profile"
       >
-        <FaInstagram className="text-2xl" />
+        <RiInstagramFill className="text-base" />
       </a>
     </div>
   );
