@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { FaLinkedinIn, FaPaperPlane } from "react-icons/fa";
 import { TbBrandGithubFilled } from "react-icons/tb";
 import { RiInstagramFill } from "react-icons/ri";
+import emailjs from "@emailjs/browser";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +11,9 @@ const ContactSection = () => {
     subject: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+  const formRef = useRef();
 
   const handleChange = (e) => {
     setFormData({
@@ -20,9 +24,44 @@ const ContactSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    // You can add your form submission logic here (e.g., API call)
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    // Menggunakan import.meta.env untuk Vite
+    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    // Validasi jika environment variables tidak tersedia
+    if (!serviceID || !templateID || !publicKey) {
+      console.error("EmailJS environment variables are not set");
+      setSubmitStatus("error");
+      setIsSubmitting(false);
+      return;
+    }
+
+    emailjs
+      .sendForm(serviceID, templateID, formRef.current, publicKey)
+      .then(
+        (result) => {
+          console.log("Email sent successfully:", result.text);
+          setSubmitStatus("success");
+          setFormData({
+            name: "",
+            email: "",
+            subject: "",
+            message: "",
+          });
+        },
+        (error) => {
+          console.error("Failed to send email:", error.text);
+          setSubmitStatus("error");
+        }
+      )
+      .finally(() => {
+        setIsSubmitting(false);
+        setTimeout(() => setSubmitStatus(null), 5000);
+      });
   };
 
   return (
@@ -152,7 +191,19 @@ const ContactSection = () => {
             </p>
 
             <div className="bg-white p-5 rounded-xl shadow-md hover:shadow-lg transition w-full">
-              <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Status Message */}
+              {submitStatus === "success" && (
+                <div className="mb-4 p-3 bg-green-100 text-green-700 rounded-lg text-sm">
+                  Message sent successfully! I'll get back to you soon.
+                </div>
+              )}
+              {submitStatus === "error" && (
+                <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg text-sm">
+                  Failed to send message. Please try again or contact me
+                  directly via email.
+                </div>
+              )}
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                 <div className="flex flex-col sm:flex-row items-center gap-2 mb-2">
                   <div className="w-full">
                     <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
@@ -216,10 +267,17 @@ const ContactSection = () => {
 
                 <button
                   type="submit"
-                  className="flex items-center justify-center px-3 py-1.5 bg-gradient-to-r from-cyan-900 to-cyan-800 text-white text-sm font-normal rounded-lg shadow-md cursor-pointer hover:from-cyan-950 hover:to-cyan-900 transition-colors duration-300"
+                  disabled={isSubmitting}
+                  className="flex items-center justify-center px-3 py-1.5 bg-gradient-to-r from-cyan-900 to-cyan-800 text-white text-sm font-normal rounded-lg shadow-md cursor-pointer hover:from-cyan-950 hover:to-cyan-900 transition-colors duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  <FaPaperPlane className="mr-2" />
-                  Send Message
+                  {isSubmitting ? (
+                    "Sending..."
+                  ) : (
+                    <>
+                      <FaPaperPlane className="mr-2" />
+                      Send Message
+                    </>
+                  )}
                 </button>
               </form>
             </div>

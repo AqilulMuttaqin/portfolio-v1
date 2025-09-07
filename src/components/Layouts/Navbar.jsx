@@ -66,7 +66,7 @@ const Navbar = () => {
 
   const SocialIcons = ({ isMobile = false }) => (
     <div
-      className={`flex items-center justify-center space-x-3 ${
+      className={`flex items-center justify-center space-x-2 ${
         isMobile ? "py-6" : ""
       }`}
     >
@@ -74,7 +74,7 @@ const Navbar = () => {
         href="https://linkedin.com/in/muhammad-aqilul-muttaqin"
         target="_blank"
         rel="noopener noreferrer"
-        className="p-2 bg-gray-800 hover:bg-cyan-900 text-white rounded-full transition-colors duration-200"
+        className="p-1.5 bg-gray-800 hover:bg-cyan-900 text-white rounded-full transition-colors duration-200"
         aria-label="LinkedIn Profile"
       >
         <FaLinkedinIn className="text-lg" />
@@ -83,7 +83,7 @@ const Navbar = () => {
         href="https://github.com/AqilulMuttaqin"
         target="_blank"
         rel="noopener noreferrer"
-        className="p-2 bg-gray-800 hover:bg-cyan-900 text-white rounded-full transition-colors duration-200"
+        className="p-1.5 bg-gray-800 hover:bg-cyan-900 text-white rounded-full transition-colors duration-200"
         aria-label="GitHub Profile"
       >
         <TbBrandGithubFilled className="text-lg" />
@@ -92,7 +92,7 @@ const Navbar = () => {
         href="https://instagram.com/aql_mtqn"
         target="_blank"
         rel="noopener noreferrer"
-        className="p-2 bg-gray-800 hover:bg-cyan-900 text-white rounded-full transition-colors duration-200"
+        className="p-1.5 bg-gray-800 hover:bg-cyan-900 text-white rounded-full transition-colors duration-200"
         aria-label="Instagram Profile"
       >
         <RiInstagramFill className="text-lg" />
