@@ -15,8 +15,7 @@ const ProjectSection = () => {
       description:
         "Personal portfolio website showcasing my projects, skills, and experience as a web developer. Built with modern React.js and Tailwind CSS.",
       features: ["Responsive Design", "Modern UI/UX", "Project Showcase"],
-      image:
-        "../projects/aqiels-portfolio.png",
+      image: "../projects/aqiels-portfolio.png",
       technologies: ["JavaScript", "React Js", "Tailwind CSS"],
       liveLink: "#",
       githubLink: "https://github.com/AqilulMuttaqin/portfolio-v1.git",
@@ -30,8 +29,7 @@ const ProjectSection = () => {
       description:
         "Decision Support System for selection process using ELECTRE method. Helps organizations make data-driven decisions efficiently.",
       features: ["Multi-criteria Analysis", "Data Visualization"],
-      image:
-        "../projects/spk-mbg.png",
+      image: "../projects/spk-mbg.png",
       technologies: ["Laravel", "Bootstrap", "JQuery", "MySQL"],
       liveLink: "#",
       githubLink: "https://github.com/AqilulMuttaqin/spk-mbg.git",
@@ -49,8 +47,7 @@ const ProjectSection = () => {
         "Performance Analytics",
         "Graph Visualization",
       ],
-      image:
-        "../projects/downtime-analysis.png",
+      image: "../projects/downtime-analysis.png",
       technologies: ["Laravel", "Bootstrap", "JQuery", "MySQL"],
       liveLink: "#",
       githubLink: "#",
@@ -64,8 +61,7 @@ const ProjectSection = () => {
       description:
         "Corporate meeting management system for scheduling, attendance using scanner, and documenting meetings with minutes.",
       features: ["Attendance Tracking", "Document Management"],
-      image:
-        "https://placehold.co/400x600",
+      image: "../projects/meeting-tracker.png",
       technologies: ["Laravel", "Bootstrap", "JQuery", "MySQL"],
       liveLink: "#",
       githubLink: "#",
@@ -79,8 +75,7 @@ const ProjectSection = () => {
       description:
         "Logistics parcel distribution system to monitor participant pickup status using scanner.",
       features: ["Participant Tracking", "Calculation Optimization"],
-      image:
-        "https://placehold.co/400x600",
+      image: "../projects/parcel-tracker.png",
       technologies: ["Laravel", "Bootstrap", "JQuery", "MySQL"],
       liveLink: "#",
       githubLink: "#",
@@ -98,8 +93,7 @@ const ProjectSection = () => {
         "Automated Reordering",
         "Multi-location Support",
       ],
-      image:
-        "https://placehold.co/400x600",
+      image: "../projects/inventory-management.png",
       technologies: ["Laravel", "Bootstrap", "JQuery", "MySQL"],
       liveLink: "#",
       githubLink: "#",
@@ -117,8 +111,7 @@ const ProjectSection = () => {
         "Automated Recording",
         "Graph Visualization",
       ],
-      image:
-        "https://placehold.co/400x600",
+      image: "../projects/scrap-record.png",
       technologies: ["Laravel", "Bootstrap", "JQuery", "MySQL"],
       liveLink: "#",
       githubLink: "#",
@@ -132,11 +125,11 @@ const ProjectSection = () => {
       description:
         "Mobile OCR application for scanning and extracting text from images and real-world objects using the camera.",
       features: ["Text Recognition", "Image Processing"],
-      image:
-        "https://placehold.co/400x600",
+      image: "../projects/ocr-scanner.png",
       technologies: ["Flutter", "Python Flask"],
       liveLink: "#",
-      githubLink: "https://github.com/AqilulMuttaqin/project_scan_food_content.git",
+      githubLink:
+        "https://github.com/AqilulMuttaqin/project_scan_food_content.git",
       confidential: false,
     },
     {
@@ -146,12 +139,8 @@ const ProjectSection = () => {
       period: "Mar 2023 - May 2023",
       description:
         "Tourism information system for Butak-Panderman hiking trails, providing route information and online ticket booking.",
-      features: [
-        "Trail Information",
-        "Online Booking",
-      ],
-      image:
-        "https://placehold.co/400x600",
+      features: ["Trail Information", "Online Booking"],
+      image: "../projects/butak-panderman.png",
       technologies: ["Laravel", "Bootstrap", "MySQL"],
       liveLink: "#",
       githubLink: "https://github.com/AqilulMuttaqin/proyek1.git",
