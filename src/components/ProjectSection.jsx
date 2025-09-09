@@ -16,7 +16,7 @@ const ProjectSection = () => {
         "Personal portfolio website showcasing my projects, skills, and experience as a web developer. Built with modern React.js and Tailwind CSS.",
       features: ["Responsive Design", "Modern UI/UX", "Project Showcase"],
       image:
-        "../assets/images/projects/aqiels-portfolio.png",
+        "../projects/aqiels-portfolio.png",
       technologies: ["JavaScript", "React Js", "Tailwind CSS"],
       liveLink: "#",
       githubLink: "https://github.com/AqilulMuttaqin/portfolio-v1.git",
@@ -31,7 +31,7 @@ const ProjectSection = () => {
         "Decision Support System for selection process using ELECTRE method. Helps organizations make data-driven decisions efficiently.",
       features: ["Multi-criteria Analysis", "Data Visualization"],
       image:
-        "../assets/images/projects/spk-mbg.png",
+        "../projects/spk-mbg.png",
       technologies: ["Laravel", "Bootstrap", "JQuery", "MySQL"],
       liveLink: "#",
       githubLink: "https://github.com/AqilulMuttaqin/spk-mbg.git",
@@ -50,7 +50,7 @@ const ProjectSection = () => {
         "Graph Visualization",
       ],
       image:
-        "../assets/images/projects/downtime-analysis.png",
+        "../projects/downtime-analysis.png",
       technologies: ["Laravel", "Bootstrap", "JQuery", "MySQL"],
       liveLink: "#",
       githubLink: "#",
@@ -217,7 +217,7 @@ const ProjectSection = () => {
 
               <div className="relative h-48 overflow-hidden">
                 <img
-                  src={new URL(project.image, import.meta.url).href}
+                  src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                 />
