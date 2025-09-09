@@ -16,7 +16,7 @@ const ProjectSection = () => {
         "Personal portfolio website showcasing my projects, skills, and experience as a web developer. Built with modern React.js and Tailwind CSS.",
       features: ["Responsive Design", "Modern UI/UX", "Project Showcase"],
       image:
-        "https://placehold.co/400x600",
+        "../assets/images/projects/aqiels-portfolio.png",
       technologies: ["JavaScript", "React Js", "Tailwind CSS"],
       liveLink: "#",
       githubLink: "https://github.com/AqilulMuttaqin/portfolio-v1.git",
@@ -31,8 +31,8 @@ const ProjectSection = () => {
         "Decision Support System for selection process using ELECTRE method. Helps organizations make data-driven decisions efficiently.",
       features: ["Multi-criteria Analysis", "Data Visualization"],
       image:
-        "https://placehold.co/400x600",
-      technologies: ["Laravel", "Bootstrap", "MySQL"],
+        "../assets/images/projects/spk-mbg.png",
+      technologies: ["Laravel", "Bootstrap", "JQuery", "MySQL"],
       liveLink: "#",
       githubLink: "https://github.com/AqilulMuttaqin/spk-mbg.git",
       confidential: false,
@@ -50,8 +50,8 @@ const ProjectSection = () => {
         "Graph Visualization",
       ],
       image:
-        "https://placehold.co/400x600",
-      technologies: ["Laravel", "Bootstrap", "MySQL"],
+        "../assets/images/projects/downtime-analysis.png",
+      technologies: ["Laravel", "Bootstrap", "JQuery", "MySQL"],
       liveLink: "#",
       githubLink: "#",
       confidential: true,
@@ -66,7 +66,7 @@ const ProjectSection = () => {
       features: ["Attendance Tracking", "Document Management"],
       image:
         "https://placehold.co/400x600",
-      technologies: ["Laravel", "Bootstrap", "MySQL"],
+      technologies: ["Laravel", "Bootstrap", "JQuery", "MySQL"],
       liveLink: "#",
       githubLink: "#",
       confidential: true,
@@ -81,7 +81,7 @@ const ProjectSection = () => {
       features: ["Participant Tracking", "Calculation Optimization"],
       image:
         "https://placehold.co/400x600",
-      technologies: ["Laravel", "Bootstrap", "MySQL"],
+      technologies: ["Laravel", "Bootstrap", "JQuery", "MySQL"],
       liveLink: "#",
       githubLink: "#",
       confidential: true,
@@ -100,7 +100,7 @@ const ProjectSection = () => {
       ],
       image:
         "https://placehold.co/400x600",
-      technologies: ["Laravel", "Bootstrap", "MySQL"],
+      technologies: ["Laravel", "Bootstrap", "JQuery", "MySQL"],
       liveLink: "#",
       githubLink: "#",
       confidential: true,
@@ -119,7 +119,7 @@ const ProjectSection = () => {
       ],
       image:
         "https://placehold.co/400x600",
-      technologies: ["Laravel", "Bootstrap", "MySQL"],
+      technologies: ["Laravel", "Bootstrap", "JQuery", "MySQL"],
       liveLink: "#",
       githubLink: "#",
       confidential: true,
@@ -217,7 +217,7 @@ const ProjectSection = () => {
 
               <div className="relative h-48 overflow-hidden">
                 <img
-                  src={project.image}
+                  src={new URL(project.image, import.meta.url).href}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                 />
