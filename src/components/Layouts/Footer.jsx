@@ -10,7 +10,6 @@ import { TbHome, TbUser, TbFolder, TbBrandGithubFilled } from "react-icons/tb";
 
 const Footer = () => {
   const handleScrollClick = (section) => {
-    // Scroll to section with smooth animation
     const element = document.getElementById(section);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });

@@ -1,10 +1,21 @@
 import { useState, useEffect } from "react";
 import { FaExternalLinkAlt, FaGithub, FaLock } from "react-icons/fa";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const ProjectSection = () => {
   const [showAll, setShowAll] = useState(false);
   const [displayCount, setDisplayCount] = useState(3);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: "ease-in-out",
+      once: false,
+      mirror: false,
+    });
+  }, []);
 
   const projects = [
     {
@@ -148,7 +159,6 @@ const ProjectSection = () => {
     },
   ];
 
-  // Update display count based on screen size
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
@@ -160,7 +170,7 @@ const ProjectSection = () => {
       }
     };
 
-    handleResize(); // Set initial value
+    handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -175,27 +185,47 @@ const ProjectSection = () => {
   return (
     <div id="project" className="flex justify-center min-h-svh bg-white py-16">
       <div className="flex flex-col items-center justify-center text-center max-w-screen-lg mx-auto px-4 w-full">
-        <div className="flex flex-col items-center justify-center">
+        <div
+          className="flex flex-col items-center justify-center"
+          data-aos="fade-down"
+          data-aos-delay="100"
+        >
           <p className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-cyan-900 to-cyan-800 bg-clip-text text-transparent">
             Projects
           </p>
           <div className="mt-1 flex flex-col items-center space-y-1">
-            <div className="w-15 h-1 bg-gradient-to-r from-cyan-900 to-cyan-800 rounded-full"></div>
-            <div className="w-6 h-0.5 bg-gradient-to-r from-cyan-900 to-cyan-800 rounded-full"></div>
+            <div
+              className="w-15 h-1 bg-gradient-to-r from-cyan-900 to-cyan-800 rounded-full"
+              data-aos="zoom-in"
+              data-aos-delay="200"
+            ></div>
+            <div
+              className="w-6 h-0.5 bg-gradient-to-r from-cyan-900 to-cyan-800 rounded-full"
+              data-aos="zoom-in"
+              data-aos-delay="300"
+            ></div>
           </div>
         </div>
-        <p className="text-sm sm:text-base text-gray-800 my-4">
+
+        <p
+          className="text-sm sm:text-base text-gray-800 my-4"
+          data-aos="fade-up"
+          data-aos-delay="150"
+        >
           Projects I've built throughout my learning journey. Each project
           represents a unique challenge and an opportunity to grow my skills.
         </p>
 
+        {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full mt-8">
-          {displayedProjects.map((project) => (
+          {displayedProjects.map((project, index) => (
             <div
               key={project.id}
               className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col relative"
+              data-aos="fade-left"
+              data-aos-delay={200 + (index % 3) * 100}
             >
-              {/* Confidential Badge - hanya badge tanpa overlay */}
+              {/* Confidential Badge */}
               {project.confidential && (
                 <div className="absolute top-4 right-4 z-10">
                   <span className="px-2 py-1 bg-red-600 text-white text-xs font-medium rounded-full flex items-center shadow-md">
@@ -236,8 +266,8 @@ const ProjectSection = () => {
                     Key Features:
                   </h4>
                   <ul className="text-xs text-gray-600">
-                    {project.features.map((feature, index) => (
-                      <li key={index} className="mb-1">
+                    {project.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="mb-1">
                         • {feature}
                       </li>
                     ))}
@@ -245,9 +275,9 @@ const ProjectSection = () => {
                 </div>
 
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech, index) => (
+                  {project.technologies.map((tech, techIndex) => (
                     <span
-                      key={index}
+                      key={techIndex}
                       className="text-gray-700 bg-gray-100 px-2 py-0.5 rounded shadow text-xs font-medium"
                     >
                       {tech}
@@ -255,22 +285,7 @@ const ProjectSection = () => {
                   ))}
                 </div>
 
-                {/* Status Confidential - tambahan teks informasi */}
-                {/* {project.confidential && (
-                  <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
-                    <div className="flex items-center text-red-700">
-                      <FaLock className="mr-2 text-sm" />
-                      <span className="text-xs font-medium">
-                        Confidential Project
-                      </span>
-                    </div>
-                    <p className="text-xs text-red-600 mt-1">
-                      Details cannot be publicly shared due to NDA
-                    </p>
-                  </div>
-                )} */}
-
-                {/* Bagian tombol yang selalu rata di bawah */}
+                {/* Action Buttons */}
                 <div className="mt-auto pt-4 border-t border-gray-100">
                   <div className="flex justify-between items-center">
                     {project.confidential ? (
@@ -311,10 +326,13 @@ const ProjectSection = () => {
           ))}
         </div>
 
+        {/* Show More/Less Button */}
         {projects.length > displayCount && !showAll && (
           <button
             onClick={() => setShowAll(true)}
             className="flex items-center mt-10 px-3 py-1.5 bg-gradient-to-r from-cyan-900 to-cyan-800 text-white text-sm font-normal rounded-lg shadow-md hover:from-cyan-950 hover:to-cyan-900 transition-colors duration-300 cursor-pointer"
+            data-aos="fade-up"
+            data-aos-delay="250"
           >
             Show More (+{projects.length - displayCount}){" "}
             <IoIosArrowDown className="inline-block ml-1" />
@@ -325,6 +343,8 @@ const ProjectSection = () => {
           <button
             onClick={() => setShowAll(false)}
             className="flex items-center mt-10 px-3 py-1.5 bg-gradient-to-r from-cyan-900 to-cyan-800 text-white text-sm font-normal rounded-lg shadow-md hover:from-cyan-950 hover:to-cyan-900 transition-colors duration-300 cursor-pointer"
+            data-aos="fade-up"
+            data-aos-delay="250"
           >
             Show Less <IoIosArrowUp className="inline-block ml-1" />
           </button>
