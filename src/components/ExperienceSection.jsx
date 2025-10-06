@@ -23,7 +23,7 @@ const ExperienceSection = () => {
 
   const workExperience = [
     {
-      role: "Software Engineer Intern",
+      role: "Software Developer Intern",
       company: "CV. Sinergi Teknokarya",
       date: "Aug 2024 - Dec 2024",
       location: "Jember, Indonesia",
