@@ -196,8 +196,7 @@ const AboutSection = () => {
 
               <div className="flex justify-center lg:justify-start">
                 <a
-                  href="/cv_muhammad-aqilul-muttaqin.pdf"
-                  download="CV - Muhammad Aqilul Muttaqin.pdf"
+                  href="https://drive.google.com/drive/u/0/folders/1khQQrvN5jAQ-2JL5zYGNTPzf5AAfzSJ-" target="_blank" rel="noopener noreferrer"
                   className="flex justify-center mt-6 items-center px-3 py-1.5 bg-gradient-to-r from-cyan-900 to-cyan-800 text-white text-sm font-normal rounded-lg shadow-md hover:from-cyan-950 hover:to-cyan-900 transition-colors duration-300"
                 >
                   <HiOutlineDownload className="inline-block mr-2" />
