@@ -23,6 +23,22 @@ const ExperienceSection = () => {
 
   const workExperience = [
     {
+      role: "Fullstack Web Developer",
+      company: "SchoolTech Indonesia (MagangHub Batch 2)",
+      date: "Nov 2025 - Mei 2026",
+      location: "Indonesia",
+      description:
+        "Developed and maintained an integrated ERP platform for the education sector with role-based permission architecture. Contributed to multiple systems including InternPro for student internships, Attendance System using card tapping for attendance tracking, and Recruitment System for company hiring processes. Built scalable backend services using Gin Golang and interactive frontend interfaces using Vue.js while managing relational and NoSQL databases.",
+      skills: [
+        "Golang",
+        "Gin",
+        "Vue.js",
+        "MariaDB",
+        "MongoDB",
+        "Role Permission",
+      ],
+    },
+    {
       role: "Software Developer Intern",
       company: "CV. Sinergi Teknokarya",
       date: "Aug 2024 - Dec 2024",
