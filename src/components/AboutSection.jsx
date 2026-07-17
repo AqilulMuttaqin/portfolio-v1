@@ -182,7 +182,7 @@ const AboutSection = () => {
               </p>
 
               <div className="mt-2 flex gap-2 justify-center lg:justify-start flex-wrap">
-                {["Web Development", "UI/UX Design", "Laravel", "React Js"].map(
+                {["Web Development", "UI/UX Design", "Laravel", "Golang", "Vue.js", "React Js"].map(
                   (interest, index) => (
                     <span
                       key={index}
