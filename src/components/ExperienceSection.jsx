@@ -24,6 +24,15 @@ const ExperienceSection = () => {
   const workExperience = [
     {
       role: "Fullstack Web Developer",
+      company: "Netra Surabaya",
+      date: "Aug 2026 - Present",
+      location: "Surabaya, Indonesia",
+      description:
+        "Building internal business applications to support company operations, including a company profile website and an employee attendance system. Also contributing to the development of an online game top-up platform, handling both backend services and interactive frontend interfaces using Laravel, Express, Vue.js, and React with PostgreSQL as the primary database.",
+      skills: ["Laravel", "Express", "Vue.js", "React", "PostgreSQL"],
+    },
+    {
+      role: "Fullstack Web Developer",
       company: "SchoolTech Indonesia (MagangHub Batch 2)",
       date: "Nov 2025 - Mei 2026",
       location: "Indonesia",
