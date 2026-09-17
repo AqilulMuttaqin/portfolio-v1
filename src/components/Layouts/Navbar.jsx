@@ -1,18 +1,18 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Link, scroller } from "react-scroll";
-import { FaLinkedinIn } from "react-icons/fa";
-import { TbBrandGithubFilled } from "react-icons/tb";
-import { RiInstagramFill } from "react-icons/ri";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { Link } from "react-scroll";
 import { IoClose } from "react-icons/io5";
 import { CgMenuRight } from "react-icons/cg";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import {
+  SECTIONS,
+  SCROLL_OFFSET,
+  SCROLL_DURATION,
+  SOCIAL_LINKS,
+} from "../../constants";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const [isManualScroll, setIsManualScroll] = useState(false);
 
   const [overlayVisible, setOverlayVisible] = useState(false);
   const [overlayScaled, setOverlayScaled] = useState(false);
@@ -23,37 +23,57 @@ const Navbar = () => {
   });
   const menuButtonRef = useRef(null);
 
-  useEffect(() => {
-    AOS.init({
-      duration: 700,
-      easing: "ease-in-out",
-      once: true,
-      mirror: false,
-    });
-  }, []);
+  // Kept in refs so the scroll listener below can stay registered exactly once
+  // instead of being torn down and re-added on every section change.
+  const activeSectionRef = useRef("home");
+  const isManualScrollRef = useRef(false);
+  const manualScrollTimeout = useRef(null);
+  const overlayTimeout = useRef(null);
+  const openMenuTimeout = useRef(null);
 
   useEffect(() => {
+    let frame = null;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-      if (!isManualScroll) {
-        const sections = ["home", "about", "experience", "project", "contact"];
-        let currentSection = activeSection;
-        for (let i = 0; i < sections.length; i++) {
-          const el = document.getElementById(sections[i]);
-          if (el) {
-            const rect = el.getBoundingClientRect();
-            if (rect.top <= 150 && rect.bottom >= 150) {
-              currentSection = sections[i];
-              break;
+      if (frame !== null) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = null;
+        setIsScrolled(window.scrollY > 10);
+
+        if (isManualScrollRef.current) return;
+        for (const section of SECTIONS) {
+          const el = document.getElementById(section);
+          if (!el) continue;
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            if (activeSectionRef.current !== section) {
+              activeSectionRef.current = section;
+              setActiveSection(section);
             }
+            break;
           }
         }
-        setActiveSection(currentSection);
-      }
+      });
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isManualScroll, activeSection]);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (frame !== null) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  const closeMenu = useCallback(() => {
+    setIsMenuOpen(false);
+    setOverlayScaled(false);
+    window.clearTimeout(overlayTimeout.current);
+    overlayTimeout.current = window.setTimeout(
+      () => setOverlayVisible(false),
+      600
+    );
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -68,18 +88,61 @@ const Navbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Stop the page behind the full-screen menu from scrolling, compensating for
+  // the scrollbar so the layout does not jump.
+  useEffect(() => {
+    if (!isMenuOpen) return undefined;
+
+    const { body } = document;
+    const scrollbarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
+    const previousOverflow = body.style.overflow;
+    const previousPaddingRight = body.style.paddingRight;
+
+    body.style.overflow = "hidden";
+    if (scrollbarWidth > 0) body.style.paddingRight = `${scrollbarWidth}px`;
+
+    return () => {
+      body.style.overflow = previousOverflow;
+      body.style.paddingRight = previousPaddingRight;
+    };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (!isMenuOpen && !overlayVisible) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") closeMenu();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isMenuOpen, overlayVisible, closeMenu]);
+
+  useEffect(
+    () => () => {
+      window.clearTimeout(manualScrollTimeout.current);
+      window.clearTimeout(overlayTimeout.current);
+      window.clearTimeout(openMenuTimeout.current);
+    },
+    []
+  );
+
+  // The react-scroll <Link> runs this handler and then performs the scroll
+  // itself, so this must not scroll as well — it only syncs state and mutes the
+  // scroll spy while the animation plays.
   const handleManualScroll = (sectionId) => {
-    setIsManualScroll(true);
+    isManualScrollRef.current = true;
+    activeSectionRef.current = sectionId;
     setActiveSection(sectionId);
     closeMenu();
-    scroller.scrollTo(sectionId, {
-      duration: 500,
-      delay: 0,
-      smooth: "easeInOutQuart",
-      offset: -32,
-    });
-    setTimeout(() => setIsManualScroll(false), 600);
+
+    window.clearTimeout(manualScrollTimeout.current);
+    manualScrollTimeout.current = window.setTimeout(() => {
+      isManualScrollRef.current = false;
+    }, SCROLL_DURATION + 200);
   };
+
   const openMenuWithCircle = () => {
     if (!menuButtonRef.current) {
       setIsMenuOpen(true);
@@ -98,27 +161,14 @@ const Navbar = () => {
     ];
     const radius = Math.ceil(Math.max(...distances));
     const size = radius * 2;
-    const left = centerX - radius;
-    const top = centerY - radius;
 
-    setOverlayProps({ left, top, size });
+    setOverlayProps({ left: centerX - radius, top: centerY - radius, size });
     setOverlayVisible(true);
 
-    requestAnimationFrame(() => {
-      setOverlayScaled(true);
-    });
+    window.requestAnimationFrame(() => setOverlayScaled(true));
 
-    setTimeout(() => {
-      setIsMenuOpen(true);
-    }, 120);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-    setOverlayScaled(false);
-    setTimeout(() => {
-      setOverlayVisible(false);
-    }, 600);
+    window.clearTimeout(openMenuTimeout.current);
+    openMenuTimeout.current = window.setTimeout(() => setIsMenuOpen(true), 120);
   };
 
   const toggleMenu = () => {
@@ -129,6 +179,8 @@ const Navbar = () => {
     }
   };
 
+  const menuIsShowing = overlayVisible || isMenuOpen;
+
   return (
     <nav
       className={`w-full fixed z-50 top-0 transition-colors duration-300 ${
@@ -138,92 +190,80 @@ const Navbar = () => {
       <div className="max-w-screen-lg mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
-            <a
-              href="/"
-              className="text-2xl font-medium text-gray-800"
+            <Link
+              to="home"
+              href="#home"
+              smooth={true}
+              offset={SCROLL_OFFSET}
+              duration={SCROLL_DURATION}
+              onClick={() => handleManualScroll("home")}
+              className="text-2xl font-medium text-gray-800 cursor-pointer"
               data-aos="fade-right"
               data-aos-delay="200"
             >
               AQiels
-            </a>
+            </Link>
           </div>
 
           <div className="hidden lg:flex">
             <ul className="flex items-center space-x-6">
-              {["home", "about", "experience", "project", "contact"].map(
-                (section, index) => (
-                  <li key={section}>
-                    <Link
-                      to={section}
-                      spy={false}
-                      smooth={true}
-                      offset={-32}
-                      duration={500}
-                      onClick={() => handleManualScroll(section)}
-                      className={`cursor-pointer px-3 py-2 rounded-md text-base transition-colors duration-300 ${
-                        activeSection === section
-                          ? "text-cyan-800 font-medium"
-                          : "text-gray-700 hover:text-cyan-800 font-normal"
-                      }`}
-                      data-aos="fade-down"
-                      data-aos-delay="300"
-                    >
-                      {section.charAt(0).toUpperCase() + section.slice(1)}
-                    </Link>
-                  </li>
-                )
-              )}
+              {/* data-aos lives on the <li>, not the link: AOS adds its
+                  aos-animate class imperatively, and React would wipe it every
+                  time the active section changes the link's className — making
+                  the item briefly disappear. */}
+              {SECTIONS.map((section) => (
+                <li key={section} data-aos="fade-down" data-aos-delay="300">
+                  <Link
+                    to={section}
+                    href={`#${section}`}
+                    smooth={true}
+                    offset={SCROLL_OFFSET}
+                    duration={SCROLL_DURATION}
+                    onClick={() => handleManualScroll(section)}
+                    aria-current={activeSection === section ? "true" : undefined}
+                    className={`cursor-pointer px-3 py-2 rounded-md text-base transition-colors duration-300 ${
+                      activeSection === section
+                        ? "text-cyan-800 font-medium"
+                        : "text-gray-700 hover:text-cyan-800 font-normal"
+                    }`}
+                  >
+                    {section.charAt(0).toUpperCase() + section.slice(1)}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div className="hidden lg:flex items-center space-x-2">
-            <a
-              href="https://linkedin.com/in/muhammad-aqilul-muttaqin"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-1.5 bg-gray-800 hover:bg-cyan-900 text-white rounded-full transition-colors duration-200"
-              aria-label="LinkedIn Profile"
-              data-aos="fade-left"
-              data-aos-delay="400"
-            >
-              <FaLinkedinIn className="text-lg" />
-            </a>
-            <a
-              href="https://github.com/AqilulMuttaqin"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-1.5 bg-gray-800 hover:bg-cyan-900 text-white rounded-full transition-colors duration-200"
-              aria-label="GitHub Profile"
-              data-aos="fade-left"
-              data-aos-delay="450"
-            >
-              <TbBrandGithubFilled className="text-lg" />
-            </a>
-            <a
-              href="https://instagram.com/aql_mtqn"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-1.5 bg-gray-800 hover:bg-cyan-900 text-white rounded-full transition-colors duration-200"
-              aria-label="Instagram Profile"
-              data-aos="fade-left"
-              data-aos-delay="500"
-            >
-              <RiInstagramFill className="text-lg" />
-            </a>
+            {SOCIAL_LINKS.map(({ href, label, Icon }, index) => (
+              <a
+                key={href}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1.5 bg-gray-800 hover:bg-cyan-900 text-white rounded-full transition-colors duration-200"
+                aria-label={label}
+                data-aos="fade-left"
+                data-aos-delay={400 + index * 50}
+              >
+                <Icon className="text-lg" />
+              </a>
+            ))}
           </div>
 
           <div className="lg:hidden flex items-center">
             <button
               ref={menuButtonRef}
+              type="button"
               onClick={toggleMenu}
-              className="text-gray-800 focus:outline-none cursor-pointer"
-              aria-label={
-                overlayVisible || isMenuOpen ? "Close menu" : "Open menu"
-              }
+              className="text-gray-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-800 rounded cursor-pointer"
+              aria-label={menuIsShowing ? "Close menu" : "Open menu"}
+              aria-expanded={menuIsShowing}
+              aria-controls="mobile-menu"
               data-aos="fade-left"
               data-aos-delay="200"
             >
-              {overlayVisible || isMenuOpen ? (
+              {menuIsShowing ? (
                 <IoClose className="text-2xl" />
               ) : (
                 <CgMenuRight className="text-2xl" />
@@ -252,6 +292,8 @@ const Navbar = () => {
       )}
 
       <div
+        id="mobile-menu"
+        aria-hidden={!isMenuOpen}
         className={`lg:hidden fixed inset-0 z-50 ${
           isMenuOpen ? "pointer-events-auto" : "pointer-events-none"
         }`}
@@ -262,12 +304,13 @@ const Navbar = () => {
           }`}
         >
           <div className="flex justify-between items-center p-4">
-            <a href="/" className="text-2xl font-medium text-white">
-              AQiels
-            </a>
+            <span className="text-2xl font-medium text-white">AQiels</span>
             <button
+              type="button"
               onClick={toggleMenu}
               className="text-white focus:outline-none cursor-pointer transition-colors duration-200"
+              aria-label="Close menu"
+              tabIndex={isMenuOpen ? 0 : -1}
             >
               <IoClose className="text-3xl" />
             </button>
@@ -275,59 +318,44 @@ const Navbar = () => {
 
           <div className="flex-1 flex flex-col justify-center px-4">
             <ul className="space-y-3 text-center">
-              {["home", "about", "experience", "project", "contact"].map(
-                (section) => (
-                  <li key={section}>
-                    <Link
-                      to={section}
-                      spy={false}
-                      smooth={true}
-                      offset={-32}
-                      duration={500}
-                      onClick={() => handleManualScroll(section)}
-                      className={`block py-1 text-xl transition-all duration-300 cursor-pointer ${
-                        activeSection === section
-                          ? "text-white font-bold"
-                          : "text-gray-200 hover:text-white font-base"
-                      }`}
-                    >
-                      {section.charAt(0).toUpperCase() + section.slice(1)}
-                    </Link>
-                  </li>
-                )
-              )}
+              {SECTIONS.map((section) => (
+                <li key={section}>
+                  <Link
+                    to={section}
+                    href={`#${section}`}
+                    smooth={true}
+                    offset={SCROLL_OFFSET}
+                    duration={SCROLL_DURATION}
+                    onClick={() => handleManualScroll(section)}
+                    tabIndex={isMenuOpen ? 0 : -1}
+                    className={`block py-1 text-xl transition-all duration-300 cursor-pointer ${
+                      activeSection === section
+                        ? "text-white font-bold"
+                        : "text-gray-200 hover:text-white font-base"
+                    }`}
+                  >
+                    {section.charAt(0).toUpperCase() + section.slice(1)}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div className="pb-8">
             <div className="flex items-center justify-center space-x-4 py-6">
-              <a
-                href="https://linkedin.com/in/muhammad-aqilul-muttaqin"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 bg-white/90 hover:bg-white text-cyan-800 rounded-full transition-all duration-300"
-                aria-label="LinkedIn Profile"
-              >
-                <FaLinkedinIn className="text-xl" />
-              </a>
-              <a
-                href="https://github.com/AqilulMuttaqin"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 bg-white/90 hover:bg-white text-cyan-800 rounded-full transition-all duration-300"
-                aria-label="GitHub Profile"
-              >
-                <TbBrandGithubFilled className="text-xl" />
-              </a>
-              <a
-                href="https://instagram.com/aql_mtqn"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 bg-white/90 hover:bg-white text-cyan-800 rounded-full transition-all duration-300"
-                aria-label="Instagram Profile"
-              >
-                <RiInstagramFill className="text-xl" />
-              </a>
+              {SOCIAL_LINKS.map(({ href, label, Icon }) => (
+                <a
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  tabIndex={isMenuOpen ? 0 : -1}
+                  className="p-2 bg-white/90 hover:bg-white text-cyan-800 rounded-full transition-all duration-300"
+                  aria-label={label}
+                >
+                  <Icon className="text-xl" />
+                </a>
+              ))}
             </div>
           </div>
         </div>

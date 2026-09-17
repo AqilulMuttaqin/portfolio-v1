@@ -23,7 +23,12 @@ export default [
     rules: {
       ...js.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      // PascalCase identifiers are components rendered in JSX; without
+      // eslint-plugin-react, no-unused-vars cannot see that usage.
+      'no-unused-vars': [
+        'error',
+        { varsIgnorePattern: '^[A-Z_]', argsIgnorePattern: '^[A-Z_]' },
+      ],
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },

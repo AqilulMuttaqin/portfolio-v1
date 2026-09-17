@@ -1,43 +1,58 @@
-import { useEffect } from "react";
 import ProfileImage from "../assets/images/profile.jpg";
 import { FaRegUser, FaRegBell } from "react-icons/fa";
 import { MdMailOutline, MdOutlinePhone } from "react-icons/md";
 import { HiOutlineLocationMarker, HiOutlineDownload } from "react-icons/hi";
 import { RiGraduationCapLine } from "react-icons/ri";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import { PROFILE } from "../constants";
+
+const INFO_ITEMS = [
+  { icon: FaRegUser, label: "Name", value: PROFILE.name },
+  {
+    icon: HiOutlineLocationMarker,
+    label: "Address",
+    value: PROFILE.location,
+  },
+  {
+    icon: RiGraduationCapLine,
+    label: "Education",
+    value: PROFILE.education,
+  },
+  { icon: MdMailOutline, label: "Email", value: PROFILE.email },
+  { icon: MdOutlinePhone, label: "Phone", value: PROFILE.phone },
+  { icon: FaRegBell, label: "Status", value: PROFILE.status },
+];
+
+const INTERESTS = [
+  "Web Development",
+  "UI/UX Design",
+  "Laravel",
+  "Golang",
+  "Vue.js",
+  "React Js",
+];
 
 const AboutSection = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-      easing: "ease-in-out",
-      once: false,
-      mirror: true,
-    });
-  }, []);
-
   return (
-    <div id="about" className="flex justify-center min-h-svh bg-white">
+    <section id="about" className="flex justify-center min-h-svh bg-white">
       <div className="flex flex-col items-center justify-center text-center max-w-screen-lg mx-auto px-4 py-16">
         <div
           className="flex flex-col items-center justify-center"
           data-aos="fade-down"
           data-aos-delay="100"
         >
-          <p className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-cyan-900 to-cyan-800 bg-clip-text text-transparent">
+          <h2 className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-cyan-900 to-cyan-800 bg-clip-text text-transparent">
             About Me
-          </p>
+          </h2>
           <div className="mt-1 flex flex-col items-center space-y-1">
             <div
               className="w-15 h-1 bg-gradient-to-r from-cyan-900 to-cyan-800 rounded-full"
               data-aos="zoom-in"
-              data-aos-delay="200"
+              data-aos-delay="150"
             ></div>
             <div
               className="w-6 h-0.5 bg-gradient-to-r from-cyan-900 to-cyan-800 rounded-full"
               data-aos="zoom-in"
-              data-aos-delay="300"
+              data-aos-delay="200"
             ></div>
           </div>
         </div>
@@ -58,33 +73,41 @@ const AboutSection = () => {
               <div
                 className="absolute top-7 md:top-7 lg:top-12 left-6 lg:left-12 w-52 md:w-60 lg:w-72 p-1 rounded-xl backdrop-blur-md bg-white/20 shadow-md transition-transform duration-400 hover:z-10 hover:scale-105"
                 data-aos="zoom-in"
-                data-aos-delay="300"
+                data-aos-delay="250"
               >
                 <img
                   src={ProfileImage}
-                  alt="Gambar 1"
+                  alt="Muhammad Aqilul Muttaqin"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-auto object-cover rounded-xl"
                 />
               </div>
               <div
                 className="absolute top-0 right-12 md:right-14 lg:right-20 w-24 md:w-28 lg:w-36 p-1 rounded-xl backdrop-blur-md bg-white/20 shadow-md transition-transform duration-400 hover:z-10 hover:scale-105"
                 data-aos="zoom-in"
-                data-aos-delay="400"
+                data-aos-delay="300"
               >
                 <img
                   src={ProfileImage}
-                  alt="Gambar 2"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-auto object-cover rounded-xl"
                 />
               </div>
               <div
                 className="absolute bottom-0 right-6 lg:right-12 w-36 md:w-40 lg:w-52 p-1 rounded-xl backdrop-blur-md bg-white/20 shadow-md transition-transform duration-400 hover:z-10 hover:scale-105"
                 data-aos="zoom-in"
-                data-aos-delay="500"
+                data-aos-delay="350"
               >
                 <img
                   src={ProfileImage}
-                  alt="Gambar 3"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-auto object-cover rounded-xl"
                 />
               </div>
@@ -103,7 +126,7 @@ const AboutSection = () => {
               Hello There!
             </p>
             <p
-              className="text-gray-800 text-xs sm:text-sm text-justify"
+              className="text-gray-800 text-xs sm:text-sm text-left sm:text-justify"
               data-aos="fade-up"
               data-aos-delay="300"
             >
@@ -119,100 +142,60 @@ const AboutSection = () => {
             {/* Info Grid */}
             <div data-aos="fade-up" data-aos-delay="350">
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-2 mt-8 text-left">
-                {[
-                  {
-                    icon: FaRegUser,
-                    label: "Name",
-                    value: "Muhammad Aqilul Muttaqin",
-                  },
-                  {
-                    icon: HiOutlineLocationMarker,
-                    label: "Address",
-                    value: "Malang, Indonesia",
-                  },
-                  {
-                    icon: RiGraduationCapLine,
-                    label: "Education",
-                    value: "D4 Informatics Engineering",
-                  },
-                  {
-                    icon: MdMailOutline,
-                    label: "Email",
-                    value: "aqilulmuttaqin16@gmail.com",
-                  },
-                  {
-                    icon: MdOutlinePhone,
-                    label: "Phone",
-                    value: "+62 823-3955-0714",
-                  },
-                  {
-                    icon: FaRegBell,
-                    label: "Status",
-                    value: "Available for Work",
-                  },
-                ].map((item, index) => (
+                {INFO_ITEMS.map((item) => (
                   <div
-                    key={index}
-                    className="flex items-center bg-white rounded-xl shadow-md hover:shadow-lg"
+                    key={item.label}
+                    className="flex items-center bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow"
                   >
                     <div className="flex items-center justify-center p-2 m-2 bg-gradient-to-r from-cyan-900 to-cyan-800 rounded-md text-sm">
                       <item.icon className="text-white" />
                     </div>
-                    <div className="flex flex-col my-2">
+                    <div className="flex flex-col my-2 min-w-0">
                       <span className="text-gray-500 text-[0.625rem] sm:text-xs">
                         {item.label}
                       </span>
-                      <span className="text-gray-800 text-[0.625rem] sm:text-xs font-medium">
+                      <span className="text-gray-800 text-[0.625rem] sm:text-xs font-medium break-words">
                         {item.value}
                       </span>
                     </div>
                   </div>
                 ))}
               </div>
-              <hr
-                className="mt-4 border-gray-200"
-                data-aos="fade-up"
-                data-aos-delay="450"
-              />
+              <hr className="mt-4 border-gray-200" />
             </div>
 
-            <div data-aos="fade-up" data-aos-delay="500">
+            <div data-aos="fade-up" data-aos-delay="400">
               <p className="mt-6 text-gray-800 text-base text-center lg:text-left font-bold">
-                Interest & Focus
+                Interest &amp; Focus
               </p>
 
               <div className="mt-2 flex gap-2 justify-center lg:justify-start flex-wrap">
-                {["Web Development", "UI/UX Design", "Laravel", "Golang", "Vue.js", "React Js"].map(
-                  (interest, index) => (
-                    <span
-                      key={index}
-                      className="text-gray-700 bg-gray-100 px-2 py-0.5 rounded shadow text-xs font-medium mb-2"
-                    >
-                      {interest}
-                    </span>
-                  )
-                )}
+                {INTERESTS.map((interest) => (
+                  <span
+                    key={interest}
+                    className="text-gray-700 bg-gray-100 px-2 py-0.5 rounded shadow text-xs font-medium mb-2"
+                  >
+                    {interest}
+                  </span>
+                ))}
               </div>
 
               <div className="flex justify-center lg:justify-start">
-                {/* Temporarily disabled: CV is still being updated.
-                    To re-enable, restore the <a> below with the updated CV link.
-                    href="https://drive.google.com/drive/u/0/folders/1khQQrvN5jAQ-2JL5zYGNTPzf5AAfzSJ-" */}
-                <button
-                  type="button"
-                  disabled
-                  title="CV is currently being updated"
-                  className="flex justify-center mt-6 items-center px-3 py-1.5 bg-gray-300 text-gray-500 text-sm font-normal rounded-lg shadow-md cursor-not-allowed"
+                <a
+                  href={PROFILE.cvUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex justify-center mt-6 items-center px-3 py-1.5 bg-gradient-to-r from-cyan-900 to-cyan-800 text-white text-sm font-normal rounded-lg shadow-md hover:from-cyan-950 hover:to-cyan-900 transition-colors duration-300 cursor-pointer"
                 >
                   <HiOutlineDownload className="inline-block mr-2" />
                   Download My CV
-                </button>
+                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
